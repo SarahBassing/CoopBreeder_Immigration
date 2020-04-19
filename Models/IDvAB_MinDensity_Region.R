@@ -1,14 +1,15 @@
 #-------------------------------------------------------------------------------
   #  Cooperative Breeders, Harvest, & Immigration
   #  Linear Regression: Minimum Wolf Density ~ Study Region
-  #  Code by Bassing et al.
+  #  Code by Bassing et al. (2020)
 #-------------------------------------------------------------------------------
   #  This model tests for regional differences in annual minimum density of
   #  wolves in Central Idaho after harvest was initiated compared to Southwest 
-  #  Alberta where longterm harvest occurred.  
+  #  Alberta where longterm harvest occurred.
   
   #  sarea: categorical variable for Central Idaho study area (0) and Southwest 
   #  Alberta study area (1)
+  #  Remove 2013 Alberta data: catastrophic flooding limited sampling that year
 
   
   #  Dimensions: i = unique observation per group per year
@@ -22,16 +23,14 @@
   
   load.module("glm")
   
-  #load("./Input/Harv_Gdensity.RData")
-  load("G:/My Drive/1_Repositories/CoopBreeder_Immigration/Input/Harv_GDensity.RData")
-  Harv_MinDensity <- Harv_GDensity[-7,]  # Remove AB 2013 (Flooding limited sampling)
+  load("./Input/Harv_Gdensity.RData")
+  Harv_MinDensity <- Harv_GDensity[-7,]
 #-------------------------------------------------------------------------------
   ####  Model  ####
   
   #  Specify model in BUGS language
   
-  #sink("IDvAB_MinDensity_Region.txt")
-  sink("G:/My Drive/1_Repositories/CoopBreeder_Immigration/IDvAB_MinDensity_Region.txt")
+  sink("IDvAB_MinDensity_Region.txt")
   cat("
   model {
 
@@ -120,8 +119,7 @@
     win.data, 
     inits, 
     params, 
-    #"IDvAB_MinDensity_Region.txt", 
-    "G:/My Drive/1_Repositories/CoopBreeder_Immigration/IDvAB_MinDensity_Region.txt",
+    "IDvAB_MinDensity_Region.txt", 
     n.chains=nc, 
     n.thin=nt, 
     n.iter=ni, 
@@ -129,9 +127,7 @@
   )
   
   #  Look and Save
-  
   print(out, dig=2)
-  
   mcmcplot(out)
   
   # write.table(out$BUGS$summary, file = "./Output/IDvAB_MinDensity_Region.txt", sep = "\t")

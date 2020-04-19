@@ -1,12 +1,12 @@
 #-------------------------------------------------------------------------------
   #  Cooperative Breeders, Harvest, & Immigration
   #  Logistic Regression: Pr(Short-Distance Immigrant) ~ Harvest
-  #  Code by Bassing et al.
+  #  Code by Bassing et al. (2020)
 #-------------------------------------------------------------------------------
   #  This model tests for the effect of harvest on the probability a wolf group 
-  #  in central Idaho has a short-distance immigrant in it and estiamtes the mean 
-  #  probabilty of a group containing a short-distance immigrant when harvest does 
-  #  and does not occur.
+  #  in central Idaho had a short-distance immigrant in it and estiamtes the mean 
+  #  probabilty of a group containing a short-distance immigrant when harvest did 
+  #  and did not occur.
   
   #  HARV: categorical variable for years when harvest did not occur (0) and 
   #  did occur (1)
@@ -23,9 +23,8 @@
   
   load.module("glm")
   
-  #load("./Input/ID_imms.RData")
-  load("G:/My Drive/1_Repositories/CoopBreeder_Immigration/Input/ID_imms.RData")
-  #-------------------------------------------------------------------------------
+  load("./Input/ID_imms.RData")
+#-------------------------------------------------------------------------------
   ####  Model  ####
   
   #  Specify model in BUGS language
@@ -121,8 +120,7 @@
     win.data, 
     inits, 
     params, 
-    #"./Idaho_SDI_harvest.txt", 
-    "G:/My Drive/1_Repositories/CoopBreeder_Immigration/Idaho_SDI_Harvest.txt",
+    "./Idaho_SDI_harvest.txt", 
     n.chains=nc, 
     n.thin=nt, 
     n.iter=ni, 
@@ -130,9 +128,7 @@
   )
   
   #  Look and Save
-  
   print(out, dig=2)
-  
   mcmcplot(out)  
   
   # write.table(out$BUGS$summary, file = "./Output/Idaho_SDI_Harvest.txt", sep = "\t")

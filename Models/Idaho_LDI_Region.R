@@ -1,10 +1,10 @@
 #-------------------------------------------------------------------------------
   #  Cooperative Breeders, Harvest, & Immigration
   #  Logistic Regression: Pr(Long-Distance Immigrant) ~ Region
-  #  Code by Bassing et al.
+  #  Code by Bassing et al. (2020)
 #-------------------------------------------------------------------------------
   #  This model tests for the effect of study area on the probability a wolf group 
-  #  in central Idaho has a long-distance immigrant in it and estiamtes the mean 
+  #  in central Idaho had a long-distance immigrant in it and estiamtes the mean 
   #  probabilty of a group containing a long-distance immigrant in the east and 
   #  west study areas in central Idaho.
   
@@ -22,15 +22,13 @@
   
   load.module("glm")
   
-  #load("./Input/ID_imms.RData")
-  load("G:/My Drive/1_Repositories/CoopBreeder_Immigration/Input/ID_imms.RData")
+  load("./Input/ID_imms.RData")
 #-------------------------------------------------------------------------------
   ####  Model  ####
   
   #  Specify model in BUGS language
   
-  #sink("./Idaho_LDI_Region.txt")
-  sink("G:/My Drive/1_Repositories/CoopBreeder_Immigration/Idaho_LDI_Region.txt")
+  sink("./Idaho_LDI_Region.txt")
   cat("
   model {
 
@@ -120,8 +118,7 @@
     win.data, 
     inits, 
     params,
-    "G:/My Drive/1_Repositories/CoopBreeder_Immigration/Idaho_LDI_Region.txt",
-    #"./Idaho_LDI_Region.txt", 
+    "./Idaho_LDI_Region.txt", 
     n.chains=nc, 
     n.thin=nt, 
     n.iter=ni, 
@@ -129,9 +126,7 @@
   )
   
   #  Look and Save
-
   print(out, dig=2)
-  
   mcmcplot(out)
   
   # write.table(out$BUGS$summary, file = "./Output/Idaho_LDI_Region.txt", sep = "\t")

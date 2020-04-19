@@ -1,13 +1,12 @@
 #-------------------------------------------------------------------------------
   #  Cooperative Breeders, Harvest, & Immigration
   #  Logistic Regression: Pr(Long-Distance Immigrant) ~ Survey Effort
-  #  Code by Bassing et al.
+  #  Code by Bassing et al. (2020)
 #-------------------------------------------------------------------------------
   #  This model tests for the effect of survey effort on the probability a wolf  
-  #  group in central Idaho has a long-distance immigrant in it. Given there was  
-  #  some variation in annual survey effort, does that variation (which could 
-  #  affect probability of detecting groups) influence the estimated probability
-  #  that a group contains immigrants in central Idaho?
+  #  group in central Idaho had a long-distance immigrant in it. Given there was  
+  #  some variation in annual survey effort, does that variation influence the
+  #  estimated probability that a group contains immigrants in central Idaho?
   
   #  SVY: continuous variable representing the number of predicted rendezvous
   #  sites surveyed each year in each study area.
@@ -21,15 +20,13 @@
   
   load.module("glm")
   
-  #load("./Input/ID_imms.RData")
-  load("G:/My Drive/1_Repositories/CoopBreeder_Immigration/Input/ID_imms.RData")
+  load("./Input/ID_imms.RData")
 #-------------------------------------------------------------------------------
   ####  Model  ####
   
   #  Specify model in BUGS language
   
-  #sink("./Idaho_LDI_SurveyEffort.txt")
-  sink("G:/My Drive/1_Repositories/CoopBreeder_Immigration/Idaho_LDI_SurveyEffort.txt")
+  sink("./Idaho_LDI_SurveyEffort.txt")
   cat("
   model {
 
@@ -113,8 +110,7 @@
     win.data, 
     inits, 
     params, 
-    #"./Idaho_LDI_survey.txt",
-    "G:/My Drive/1_Repositories/CoopBreeder_Immigration/Idaho_LDI_SurveyEffort.txt",
+    "./Idaho_LDI_survey.txt",
     n.chains=nc, 
     n.thin=nt, 
     n.iter=ni, 
@@ -122,9 +118,7 @@
   )
   
   #  Look and Save
-
   print(out, dig=2)
-  
   mcmcplot(out)
   
   # write.table(out$BUGS$summary, file = "./Output/Idaho_LDI_SurveyEffort.txt", sep = "\t")

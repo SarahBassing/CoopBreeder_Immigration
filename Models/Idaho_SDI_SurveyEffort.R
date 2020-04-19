@@ -1,13 +1,12 @@
 #-------------------------------------------------------------------------------
   #  Cooperative Breeders, Harvest, & Immigration
   #  Logistic Regression: Pr(Short-Distance Immigrant) ~ Survey
-  #  Code by Bassing et al.
+  #  Code by Bassing et al. (2020)
 #-------------------------------------------------------------------------------
   #  This model tests for the effect of survey effort on the probability a wolf  
-  #  group in central Idaho has a short-distance immigrant in it. Given there was  
-  #  some variation in annual survey effort, does variation (which could affect
-  #  probability of detecting groups) influence the estimated probability that
-  #  a group contains immigrants?
+  #  group in central Idaho had a short-distance immigrant in it. Given there was  
+  #  some variation in annual survey effort, does variation influence the 
+  #  estimated probability that a group contains immigrants?
   
   #  SVY: continuous variable representing the number of predicted rendezvous
   #  sites surveyed each year in each study area.
@@ -21,15 +20,13 @@
   
   load.module("glm")
   
-  #load("./Input/ID_imms.RData")
-  load("G:/My Drive/1_Repositories/CoopBreeder_Immigration/For_Publication/Input/ID_imms.RData")
+  load("./Input/ID_imms.RData")
 #-------------------------------------------------------------------------------
   ####  Model  ####
   
   #  Specify model in BUGS language
   
-  #sink("./ID_SDI_survey.txt")
-  sink("G:/My Drive/1_Repositories/CoopBreeder_Immigration/For_Publication/Idaho_SDI_SurveyEffort.txt")
+  sink("./ID_SDI_survey.txt")
   cat("
   model {
 
@@ -113,8 +110,7 @@
     win.data, 
     inits, 
     params, 
-    #"./ID_SDI_survey.txt",
-    "G:/My Drive/1_Repositories/CoopBreeder_Immigration/For_Publication/Idaho_SDI_SurveyEffort.txt",
+    "./ID_SDI_survey.txt",
     n.chains=nc, 
     n.thin=nt, 
     n.iter=ni, 
@@ -122,9 +118,7 @@
   )
   
   #  Look and Save
-  
   print(out, dig=2)
-  
   mcmcplot(out)  
   
   # write.table(out$BUGS$summary, file = "./For_Publication/Output/Idaho_SDI_SurveyEffort.txt", sep = "\t")

@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
   #  Cooperative Breeders, Harvest, & Immigration
   #  Linear Regression: Idaho Wolf Density ~ Harvest
-  #  Code by Bassing et al.
+  #  Code by Bassing et al. (2020)
 #-------------------------------------------------------------------------------
   #  This model estimates the relationship between harvest of wolves and the 
   #  annual minimum density of wolves in central Idaho.
@@ -19,15 +19,13 @@
   
   load.module("glm")
   
-  #load("./Input/ID_Gdensity.RData") 
-  load("G:/My Drive/1_Repositories/CoopBreeder_Immigration/Input/ID_Gdensity.RData")
+  load("./Input/ID_Gdensity.RData") 
 #-------------------------------------------------------------------------------
   ####  Model  ####
   
   #  Specify model in BUGS language
   
-  #sink("Idaho_MinDensity_Harvest.txt")
-  sink("G:/My Drive/1_Repositories/CoopBreeder_Immigration/Idaho_MinDensity_Harvest.txt")
+  sink("Idaho_MinDensity_Harvest.txt")
   cat("
   model {
 
@@ -114,8 +112,7 @@
     win.data, 
     inits, 
     params, 
-    #"Idaho_MinDensity_Harvest.txt", 
-    "G:/My Drive/1_Repositories/CoopBreeder_Immigration/Idaho_MinDensity_Harvest.txt",
+    "Idaho_MinDensity_Harvest.txt", 
     n.chains=nc, 
     n.thin=nt, 
     n.iter=ni, 
@@ -123,9 +120,7 @@
   )
 
   #  Take a look and save
-  
   print(out, dig=2)
-  
   mcmcplot(out)
   
   # write.table(out$BUGS$summary, file = "./Output/Idaho_MinDensity_Harvest.txt", sep = "\t")

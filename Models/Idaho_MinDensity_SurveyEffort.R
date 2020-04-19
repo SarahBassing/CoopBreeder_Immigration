@@ -1,13 +1,12 @@
 #-------------------------------------------------------------------------------
   #  Cooperative Breeders, Harvest, & Immigration
   #  Linear Regression: Idaho Wolf Density ~ Survey Effort
-  #  Code by Bassing et al.
+  #  Code by Bassing et al. (2020)
 #-------------------------------------------------------------------------------
   #  This model estimates the relationship between survey effort and annual 
   #  minimum density of wolves in both study areas. Given there was some variation
-  #  in annual survey effort, does that variation (which could affect probability 
-  #  of detecting groups) influence the estiamted minimum density of wolves in 
-  #  central Idaho?
+  #  in annual survey effort, does that variation influence the estiamted minimum  
+  #  density of wolves in central Idaho?
 
   #  SVY: continuous variable representing the number of predicted rendezvous
   #  sites surveyed each year in each study area.
@@ -21,15 +20,13 @@
   
   load.module("glm")
   
-  #load("./Input/ID_Gdensity.RData")
-  load("G:/My Drive/1_Repositories/CoopBreeder_Immigration/Input/ID_Gdensity.RData")
+  load("./Input/ID_Gdensity.RData")
 #-------------------------------------------------------------------------------
   ####  Model  ####
   
   #  Specify model in BUGS language
   
-  #sink("Idaho_MinDensity_SurveyEffort.txt")
-  sink("G:/My Drive/1_Repositories/CoopBreeder_Immigration/Idaho_MinDensity_SurveyEffort.txt")
+  sink("Idaho_MinDensity_SurveyEffort.txt")
   cat("
   model {
 
@@ -117,8 +114,7 @@
     win.data, 
     inits, 
     params, 
-    #"Idaho_MinDensity_SurveyEffort.txt", 
-    "G:/My Drive/1_Repositories/CoopBreeder_Immigration/Idaho_MinDensity_SurveyEffort.txt",
+    "Idaho_MinDensity_SurveyEffort.txt", 
     n.chains=nc, 
     n.thin=nt, 
     n.iter=ni, 
@@ -126,9 +122,7 @@
   )
   
   #  Save and take a look
-  
   print(out, dig=2)
-  
   mcmcplot(out)
   
   # write.table(out$BUGS$summary, file = "./Output/Idaho_MinDensity_SurveyEffort.txt", sep = "\t")
