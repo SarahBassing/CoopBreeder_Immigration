@@ -1,5 +1,6 @@
 # CoopBreeder_Immigration
-A repository to hold code and input data used for analyses in "Immigration Does Not Offset Harvest Mortality in a Cooperatively Breeding Carnivore" manuscript by Bassing et al. Contains scripts for hypothesis testing of whether immigration into groups can compensate for harvest mortality in a cooperatively breeding species. 
+Bassing, S. B., D. E., Ausband, M. S. Mitchell, M. K. Schwartz, J. J. Nowak, G. Hale, & L. P. Waits. 2020. Immigration Does Not Offset Harvest Mortality in Groups of a Cooperatively Breeding Carnivore. Animal Conservation.  
+Appendix S6: Repository containing scripts and data for hypothesis testing of whether immigration into groups compensated for harvest mortality in a cooperatively breeding species, gray wolves (Canis lupus). 
 
 Code:
 Linear models that test whether the annual minimum density of wolves sampled is influenced by a) harvest mortality, b) differences in the East vs. West study areas in the Central Idaho region, and/or c) the amount of effort put into locating wolf rendezvous site surveys.
