@@ -1,0 +1,1 @@
+Empty folder to hold model outputs after running R scripts
