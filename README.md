@@ -1,6 +1,7 @@
 # CoopBreeder_Immigration
-Bassing, S. B., D. E., Ausband, M. S. Mitchell, M. K. Schwartz, J. J. Nowak, G. Hale, & L. P. Waits. 2020. Immigration Does Not Offset Harvest Mortality in Groups of a Cooperatively Breeding Carnivore. Animal Conservation.  
-Appendix S6: Repository containing scripts and data for hypothesis testing of whether immigration into groups compensated for harvest mortality in a cooperatively breeding species, gray wolves (Canis lupus). 
+Bassing, S.B., Ausband, D.E., Mitchell, M.S., Schwartz, K.M., Nowak, J.J., Hale, G., & Waits, L.P. (2020). Immigration Does Not Offset Harvest Mortality in Groups of a Cooperatively Breeding Carnivore. Animal Conservation. doi:10.1111/acv.12593
+
+Supporting Information Appendix S6: Repository containing scripts and data for hypothesis testing of whether immigration into groups compensated for harvest mortality in a cooperatively breeding species, gray wolves (Canis lupus). 
 
 Code:
 Linear models that test whether the annual minimum density of wolves sampled is influenced by a) harvest mortality, b) differences in the East vs. West study areas in the Central Idaho region, and/or c) the amount of effort put into locating wolf rendezvous site surveys.
